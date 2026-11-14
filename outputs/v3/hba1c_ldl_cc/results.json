@@ -1,0 +1,205 @@
+{
+  "config": {
+    "run_id": "hba1c_ldl_cc",
+    "outcome": "hba1c",
+    "fast": false,
+    "ldl_in_main": true,
+    "complete_case": true,
+    "seed": 20260621,
+    "n_trees": 4000,
+    "k_folds": 5,
+    "n_repeats": 5
+  },
+  "replication": {
+    "ancova_est": -0.055914254533818354,
+    "ancova_lo": -0.45617682850364766,
+    "ancova_hi": 0.3443483194360109,
+    "paper_model": [
+      -0.10122270158305102,
+      -0.49180307606772805,
+      0.289357672901626
+    ],
+    "unadjusted_est": -0.06921182266009965,
+    "paper_adj": [
+      -0.1,
+      -0.46,
+      0.25
+    ],
+    "paper_unadj": [
+      -0.03,
+      -0.42,
+      0.35
+    ]
+  },
+  "ate_forest": {
+    "est": -0.05501791085393971,
+    "lo": -0.5451671199195232,
+    "hi": 0.4351312982116436
+  },
+  "ate_aipw": {
+    "est": -0.062034962822740146,
+    "se": 0.2111130725389158,
+    "lo": -0.47581658499901514,
+    "hi": 0.3517466593535349
+  },
+  "cate_oof": {
+    "mean": -0.04708503502964607,
+    "sd": 0.09013601817684445,
+    "min": -0.250012925780532,
+    "max": 0.17973114053894296
+  },
+  "blp": {
+    "beta1": -0.06203496282274006,
+    "beta1_se": 0.20927745804740921,
+    "beta2": -3.41453450607567,
+    "beta2_se": 1.7222679291832867,
+    "p_two_sided": 0.04188560111606013,
+    "p_one_sided": 0.9790571994419699
+  },
+  "blp_beta2_by_repeat": [
+    -3.41453450607567,
+    -4.315485840372122,
+    -2.8116827829876403,
+    -4.161941524452305,
+    -3.2402170162103507
+  ],
+  "gates": [
+    {
+      "group": 1,
+      "n": 95.0,
+      "est": 0.3399695376333355,
+      "se": 0.32076802792627407
+    },
+    {
+      "group": 2,
+      "n": 95.0,
+      "est": 0.054459722360628376,
+      "se": 0.348568887051733
+    },
+    {
+      "group": 3,
+      "n": 95.0,
+      "est": -0.4948249039863785,
+      "se": 0.4249832191156867
+    }
+  ],
+  "gates_g1_minus_g3": {
+    "est": 1.043426218104614,
+    "se": 0.5311813223820696
+  },
+  "rate_autoc": {
+    "est": -0.33928856783400385,
+    "se": 0.17813612991492,
+    "p_one_sided": 0.9715877885267774
+  },
+  "blp_covariates_joint_p": 0.47322958787446145,
+  "blp_covariates_min_p_holm": 1.0,
+  "ancova_interactions_joint_p": 0.43833998124527845,
+  "ancova_interactions_randomization_p": 0.7136431784107946,
+  "split_stability_top": {
+    "Baseline HbA1c (%)": 0.28,
+    "Age (y)": 0.14,
+    "Systolic BP": 0.105,
+    "LDL": 0.085,
+    "Days, baseline A1c test to consent": 0.065
+  },
+  "attrition_model_auc": 0.641130604288499,
+  "sd_y": 2.1930796766193854,
+  "heterogeneity_detected": false,
+  "prespecified_min_p_holm": 0.6530949785401323,
+  "added_subgroups_min_p_holm": 0.25742933341365504,
+  "honest_tree_leaf_p": 0.4036100922529824,
+  "honest_splits_min_p": 0.26198404187682844,
+  "n": 285,
+  "n_treat": 140,
+  "sensitivity": [
+    {
+      "analysis": "Main",
+      "n": 285,
+      "ate_aipw": -0.062034962822740146,
+      "blp_beta2": -3.41453450607567,
+      "blp_beta2_se": 1.7222679291832867,
+      "blp_p_one_sided": 0.9790571994419699,
+      "autoc": -0.33928856783400385,
+      "autoc_se": 0.17813612991492,
+      "autoc_p_one_sided": 0.9715877885267774
+    },
+    {
+      "analysis": "S1 Outcome = 6-mo level",
+      "n": 285,
+      "ate_aipw": -0.09214498950813033,
+      "blp_beta2": -2.0701720359535214,
+      "blp_beta2_se": 1.8060204048959476,
+      "blp_p_one_sided": 0.8741565592996392,
+      "autoc": -0.19405153330734815,
+      "autoc_se": 0.1714996784969374,
+      "autoc_p_one_sided": 0.8710772154721029
+    },
+    {
+      "analysis": "S2 LDL removed",
+      "n": 285,
+      "ate_aipw": -0.04495770871656471,
+      "blp_beta2": -2.0205128769884024,
+      "blp_beta2_se": 1.5483533301953898,
+      "blp_p_one_sided": 0.9040438752361462,
+      "autoc": -0.2627853229811288,
+      "autoc_se": 0.18252680857523218,
+      "autoc_p_one_sided": 0.9250249982336711
+    },
+    {
+      "analysis": "S3 IPW for excluded patients",
+      "n": 285,
+      "ate_aipw": -0.04443442329090354,
+      "blp_beta2": -2.193281995521468,
+      "blp_beta2_se": 1.7339330131097197,
+      "blp_p_one_sided": 0.9158582661033876,
+      "autoc": -0.30776306789958446,
+      "autoc_se": 0.17032165790564627,
+      "autoc_p_one_sided": 0.9646151216057204
+    },
+    {
+      "analysis": "S4 Baseline measured <=180 d before consent",
+      "n": 232,
+      "ate_aipw": -0.0507214053961042,
+      "blp_beta2": -2.8363070884701918,
+      "blp_beta2_se": 1.656022107893416,
+      "blp_p_one_sided": 0.9549354148361914,
+      "autoc": -0.3311952321684305,
+      "autoc_se": 0.19498424855988641,
+      "autoc_p_one_sided": 0.9553002882468177
+    },
+    {
+      "analysis": "PC injected contrast 0.55 pp = 0.25 SD (older vs younger)",
+      "n": 285,
+      "ate_aipw": -0.06955940988620461,
+      "blp_beta2": -0.17633485777636776,
+      "blp_beta2_se": 1.1633613971387633,
+      "blp_p_one_sided": 0.5596262544851709,
+      "autoc": -0.07044991558287815,
+      "autoc_se": 0.1780130448155371,
+      "autoc_p_one_sided": 0.653857863869918
+    },
+    {
+      "analysis": "PC injected contrast 1.10 pp = 0.5 SD (older vs younger)",
+      "n": 285,
+      "ate_aipw": -0.09474043311834063,
+      "blp_beta2": 1.5592031890848737,
+      "blp_beta2_se": 0.795581959480145,
+      "blp_p_one_sided": 0.024371051917038478,
+      "autoc": 0.2706479802657403,
+      "autoc_se": 0.16640756384224312,
+      "autoc_p_one_sided": 0.0519305589934298
+    },
+    {
+      "analysis": "PC injected contrast 2.19 pp = 1 SD (older vs younger)",
+      "n": 285,
+      "ate_aipw": -0.1544402411062979,
+      "blp_beta2": 1.8349122744835058,
+      "blp_beta2_se": 0.34424842703246794,
+      "blp_p_one_sided": 3.0847597254357595e-08,
+      "autoc": 0.8135844927550755,
+      "autoc_se": 0.16998883325429112,
+      "autoc_p_one_sided": 8.502433960222433e-07
+    }
+  ]
+}

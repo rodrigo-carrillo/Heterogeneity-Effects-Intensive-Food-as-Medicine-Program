@@ -1,0 +1,16 @@
+n: 392
+n_no_ed: 222
+n_ed: 170
+ols_interaction: -3.683
+ols_se: 1.21807
+ols_p_hc1: 0.00249768
+perm_B: 10000
+perm_seed: 20261102
+constant_effect_tau: 0.965046
+perm_p_sharp_null: 0.00229977
+perm_p_constant_effect_null: 0.0019998
+trim10_n: 353
+trim10_excluded: 39
+trim10_interaction: -1.4873
+trim10_se: 0.910389
+trim10_p_hc1: 0.102322

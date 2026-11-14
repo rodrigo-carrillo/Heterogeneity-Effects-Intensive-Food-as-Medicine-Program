@@ -1,0 +1,9 @@
+file,kind,n_compared,n_diff,max_abs,max_rel,text_mismatch,note
+outputs/replication/comparison.csv,csv,716,0,0.0,0.0,0,
+outputs/replication/etable18a.csv,csv,128,0,0.0,0.0,0,
+outputs/replication/replication_report.md,md,358,0,0.0,0.0,0,
+outputs/replication/table1.csv,csv,210,0,0.0,0.0,0,
+outputs/replication/table2_adjusted.csv,csv,90,0,0.0,0.0,0,
+outputs/replication/table3.csv,csv,342,0,0.0,0.0,0,
+outputs/replication/table4.csv,csv,330,0,0.0,0.0,0,
+manuscript/figure1.png,png,1,0,0.0,0.0,1,MISSING

@@ -1,0 +1,69 @@
+"""Approximate the authors' long-format MI for weight (mi impute mvn on the stacked panel,
+predictors = treat, post, post*treat, strata, demographics, age bins -- NOT the patient's own
+other-period weight). 10 imputations, Rubin's rules. Repeated over many seeds to see the
+distribution of the adjusted estimate in kg and in lb."""
+import numpy as np, pandas as pd
+from scipy import stats
+
+D = pd.read_csv("data/raw/dataverse_files/analysis_sample.csv")
+d = D[D.weight_val_6mo.notna()].copy()
+ages = [f"age5_{i}" for i in range(1, 10)]
+cov = ["rural_site", "hba1c_cat_control", "male", "race_nonhisp_black", "hispanic"] + ages
+
+
+def long_panel(scale_col):
+    rows = []
+    for per, m in [(0, 0), (1, 6)]:
+        r = d[["subject_id", "treat_now"] + cov].copy()
+        r["post"] = per; r["post_treat"] = per * r.treat_now
+        r["y"] = d[scale_col.format(m)].values
+        r["time"] = (d[f"weight_date_{m}mo"] - d.consent_date).values
+        rows.append(r)
+    return pd.concat(rows, ignore_index=True)
+
+
+def fe_fit(p):
+    p = p.copy()
+    base = p[p.post == 0].set_index("subject_id").y
+    p["post_base"] = p.post * p.subject_id.map(base)
+    xs = ["post", "post_treat", "post_base", "time"]
+    W = p[["y"] + xs] - p.groupby("subject_id")[["y"] + xs].transform("mean")
+    X = W[xs].values; y = W.y.values
+    A = np.linalg.inv(X.T @ X); b = A @ X.T @ y; e = y - X @ b
+    meat = np.zeros((4, 4))
+    for _, idx in p.groupby("subject_id").indices.items():
+        s = X[idx].T @ e[idx]; meat += np.outer(s, s)
+    G = p.subject_id.nunique(); N = len(p)
+    V = A @ meat @ A * G / (G - 1) * (N - 1) / (N - 5)
+    return b[1], V[1, 1]
+
+
+def mi_once(p, rng, M=10):
+    Z = np.column_stack([np.ones(len(p)), p[["treat_now", "post", "post_treat"] + cov].values])
+    Y = p[["y", "time"]].values
+    obs = ~np.isnan(Y).any(1)
+    B = np.linalg.lstsq(Z[obs], Y[obs], rcond=None)[0]
+    R = Y[obs] - Z[obs] @ B; S = R.T @ R / (obs.sum() - Z.shape[1])
+    ests, vars_ = [], []
+    for m in range(M):
+        q = p.copy(); Yi = Y.copy()
+        for i in np.where(np.isnan(Y).any(1))[0]:
+            draw = Z[i] @ B + rng.multivariate_normal(np.zeros(2), S)
+            for j in range(2):
+                if np.isnan(Yi[i, j]): Yi[i, j] = draw[j]  # (ignores conditional on observed comp.; approx)
+        q["y"], q["time"] = Yi[:, 0], Yi[:, 1]
+        b, v = fe_fit(q); ests.append(b); vars_.append(v)
+    qb = np.mean(ests); W = np.mean(vars_); Bv = np.var(ests, ddof=1)
+    T = W + (1 + 1 / M) * Bv
+    return qb, np.sqrt(T)
+
+
+rng = np.random.default_rng(1)
+for col, lab in [("weight_val_{}mo", "kg(0.45)"), ("weight_lb_val_{}mo", "lb")]:
+    p = long_panel(col)
+    print(lab, "n subjects with missing baseline:", p[(p.post == 0)].y.isna().sum(),
+          " missing baseline time:", p[(p.post == 0)].time.isna().sum())
+    res = np.array([mi_once(p, rng) for _ in range(100)])
+    b, se = res[:, 0], res[:, 1]
+    print(f"  MI estimate over 100 seeds: median {np.median(b):.2f}, 5-95% [{np.percentile(b,5):.2f}, {np.percentile(b,95):.2f}]; "
+          f"median CI half-width {1.96*np.median(se):.2f}; frac p<.05 {np.mean(np.abs(b/se)>1.96):.2f}")

@@ -1,0 +1,16 @@
+variable,adj_diff,ci_low,ci_high
+"fruit_num",.2619965,-.4718566,.9958495
+"vegetables_num",1.989458,-.6843682,4.663284
+"sweet_drink_num",-.6081765,-1.497352,.2809987
+"never_eat_out_yn",.0538544,-.0515887,.1592974
+"diet_improved_yn",.1691707,.0922183,.2461232
+"diet_improve_index",.3796567,.1833384,.575975
+"engagement_index",.3643095,.16227,.566349
+"diabetes_knowledge_score",.0433081,.0101555,.0764607
+"healthy_attitudes_index",.1332777,-.0686835,.3352389
+"self_efficacy_index",-.0325348,-.2543259,.1892563
+"exercise_smoking_index",.0476298,-.1837924,.279052
+"dietician_visits_n",2.012527,1.737587,2.287468
+"dsmt_visits",1.878557,1.670767,2.086347
+"endocrinology_visits_n",.0512233,-.0787408,.1811875
+"weight_visits_n",-.0614419,-.1203227,-.0025612

@@ -1,0 +1,9 @@
+# Tested 2026-10-21 with Python 3.13 (macOS). v1 ran on a Windows conda env "DataScience_Analytics".
+econml==0.17.0
+scikit-learn==1.9.1
+numpy==2.5.4
+pandas==3.0.6
+statsmodels==0.15.0
+scipy==1.18.1
+matplotlib==3.11.2
+tabulate==0.10.0       # pandas.DataFrame.to_markdown in the results summary

@@ -1,0 +1,18 @@
+{
+  "n": 392,
+  "n_no_ed": 222,
+  "n_ed": 170,
+  "ols_interaction": -3.682997758634511,
+  "ols_se": 1.2180746223546297,
+  "ols_p_hc1": 0.0024976793816860895,
+  "perm_B": 10000,
+  "perm_seed": 20261102,
+  "constant_effect_tau": 0.9650456955726654,
+  "perm_p_sharp_null": 0.0022997700229977,
+  "perm_p_constant_effect_null": 0.001999800019998,
+  "trim10_n": 353,
+  "trim10_excluded": 39,
+  "trim10_interaction": -1.4873032596377087,
+  "trim10_se": 0.9103885719080779,
+  "trim10_p_hc1": 0.10232152384796309
+}

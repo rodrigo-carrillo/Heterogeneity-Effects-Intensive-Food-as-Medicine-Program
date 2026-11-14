@@ -1,0 +1,16 @@
+,share_of_root_splits
+Systolic BP,0.27
+Any prior-year ED,0.27
+Prior-year ED/IP visits,0.11
+Insulin,0.085
+Baseline HbA1c (%),0.065
+Prior-year outpatient visits,0.05
+Baseline weight (kg),0.04
+BMI,0.025
+Age (y),0.02
+Male,0.02
+Diastolic BP,0.015
+"Days, baseline A1c test to consent",0.015
+Rural site,0.005
+Metformin,0.005
+Sulfonylurea,0.005

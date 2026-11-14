@@ -1,0 +1,87 @@
+N = 349  treated = 170  missing filled: 19 
+
+== HbA1c level at 6 mo (seed 1)
+ATE (AIPW) -0.058 (se 0.183)
+
+Best linear fit using forest predictions (on held-out data)
+as well as the mean forest prediction as regressors, along
+with one-sided heteroskedasticity-robust (HC3) SEs:
+
+                               Estimate Std. Error t value Pr(>t)
+mean.forest.prediction           1.1806     3.1857  0.3706 0.3556
+differential.forest.prediction -14.5333     2.3545 -6.1726 1.0000
+
+diff.forest slope -14.533, one-sided p = 1.000
+RATE AUTOC cross-fit: est -0.157 se 0.170 one-sided p = 0.822
+RATE AUTOC OOB-priority: est -0.912 se 0.160 one-sided p = 1.000
+OOB tau: sd 0.069, range [-0.25, 0.11]
+
+== HbA1c level at 6 mo (seed 2)
+ATE (AIPW) -0.058 (se 0.183)
+
+Best linear fit using forest predictions (on held-out data)
+as well as the mean forest prediction as regressors, along
+with one-sided heteroskedasticity-robust (HC3) SEs:
+
+                               Estimate Std. Error t value Pr(>t)
+mean.forest.prediction           1.1870     3.1998  0.3710 0.3554
+differential.forest.prediction -14.5184     2.3614 -6.1483 1.0000
+
+diff.forest slope -14.518, one-sided p = 1.000
+RATE AUTOC cross-fit: est -0.019 se 0.156 one-sided p = 0.548
+RATE AUTOC OOB-priority: est -0.916 se 0.170 one-sided p = 1.000
+OOB tau: sd 0.069, range [-0.25, 0.11]
+
+== HbA1c level at 6 mo (seed 3)
+ATE (AIPW) -0.058 (se 0.183)
+
+Best linear fit using forest predictions (on held-out data)
+as well as the mean forest prediction as regressors, along
+with one-sided heteroskedasticity-robust (HC3) SEs:
+
+                               Estimate Std. Error t value Pr(>t)
+mean.forest.prediction           1.1806     3.1779  0.3715 0.3553
+differential.forest.prediction -14.5202     2.3466 -6.1878 1.0000
+
+diff.forest slope -14.520, one-sided p = 1.000
+RATE AUTOC cross-fit: est -0.093 se 0.176 one-sided p = 0.701
+RATE AUTOC OOB-priority: est -0.920 se 0.169 one-sided p = 1.000
+OOB tau: sd 0.069, range [-0.25, 0.11]
+
+== HbA1c change (seed 1)
+ATE (AIPW) -0.085 (se 0.192)
+
+Best linear fit using forest predictions (on held-out data)
+as well as the mean forest prediction as regressors, along
+with one-sided heteroskedasticity-robust (HC3) SEs:
+
+                               Estimate Std. Error t value Pr(>t)
+mean.forest.prediction           1.2259     2.3316  0.5258 0.2997
+differential.forest.prediction -17.1011     2.5244 -6.7742 1.0000
+
+diff.forest slope -17.101, one-sided p = 1.000
+RATE AUTOC cross-fit: est -0.069 se 0.175 one-sided p = 0.653
+RATE AUTOC OOB-priority: est -1.046 se 0.201 one-sided p = 1.000
+OOB tau: sd 0.069, range [-0.26, 0.11]
+
+== HbA1c change (seed 2)
+ATE (AIPW) -0.085 (se 0.192)
+
+Best linear fit using forest predictions (on held-out data)
+as well as the mean forest prediction as regressors, along
+with one-sided heteroskedasticity-robust (HC3) SEs:
+
+                               Estimate Std. Error t value Pr(>t)
+mean.forest.prediction           1.2287     2.3547  0.5218 0.3011
+differential.forest.prediction -17.0227     2.5357 -6.7131 1.0000
+
+diff.forest slope -17.023, one-sided p = 1.000
+RATE AUTOC cross-fit: est 0.034 se 0.184 one-sided p = 0.427
+RATE AUTOC OOB-priority: est -1.038 se 0.188 one-sided p = 1.000
+OOB tau: sd 0.069, range [-0.26, 0.11]
+     slope.Estimate p_cal.Pr(>t) p_rate
+[1,]        -14.533            1  0.822
+[2,]        -14.518            1  0.548
+[3,]        -14.520            1  0.701
+[4,]        -17.101            1  0.653
+[5,]        -17.023            1  0.427

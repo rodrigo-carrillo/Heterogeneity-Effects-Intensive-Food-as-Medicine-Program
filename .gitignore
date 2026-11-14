@@ -1,0 +1,22 @@
+# Trial data: download from Harvard Dataverse (doi:10.7910/DVN/LZUTU0); never commit it
+data/raw/
+*.zip
+
+# Individual-level outputs written by the pipeline (one row per patient)
+outputs/**/patient_level_cate.csv
+
+# Smoke-test outputs and the manuscript figure written locally
+outputs/v3_fast/
+manuscript/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# OS / editor / secrets
+.DS_Store
+desktop.ini
+Thumbs.db
+.env

@@ -1,0 +1,6 @@
+control,treatment,variable
+0,1,"treat_now"
+10.64246,23.39412,"MEAN_site_visits_12mo"
+4.575419,9.264706,"MEAN_months_with_visits_12mo"
+6.896961,12.19918,"SD_site_visits_12mo"
+2.496888,3.778707,"SD_months_with_visits_12mo"

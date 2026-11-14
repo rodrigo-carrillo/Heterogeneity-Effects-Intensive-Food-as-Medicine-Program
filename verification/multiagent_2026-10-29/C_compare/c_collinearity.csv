@@ -1,0 +1,17 @@
+outcome,variable,r2_on_other_modifiers,vif
+hba1c,drug_any_db_0mo,0.3099960753552071,1.4492671190454316
+hba1c,hba1c_cat_control,0.5634164890354042,2.290512524833064
+hba1c,"drug_any_db != OR(5 drug flags), n",,2.0
+hba1c,rank(full interaction design) / ncol,,1.0
+weight,drug_any_db_0mo,0.3081045636707902,1.4453050959627827
+weight,hba1c_cat_control,0.5436586274116377,2.191341964740153
+weight,"drug_any_db != OR(5 drug flags), n",,1.0
+weight,rank(full interaction design) / ncol,,1.0
+sbp,drug_any_db_0mo,0.2933776240357825,1.4151830369586806
+sbp,hba1c_cat_control,0.55813002253704,2.2631091746526852
+sbp,"drug_any_db != OR(5 drug flags), n",,1.0
+sbp,rank(full interaction design) / ncol,,1.0
+ed_ip,drug_any_db_0mo,0.31126857222743964,1.4519447780016652
+ed_ip,hba1c_cat_control,0.5477419682955929,2.2111271219028197
+ed_ip,"drug_any_db != OR(5 drug flags), n",,2.0
+ed_ip,rank(full interaction design) / ncol,,1.0

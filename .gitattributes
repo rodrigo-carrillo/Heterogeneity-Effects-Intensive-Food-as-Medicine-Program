@@ -1,0 +1,6 @@
+# Store text with LF line endings (the project moved from macOS to Windows)
+* text=auto
+*.pdf binary
+*.png binary
+*.zip binary
+*.docx binary

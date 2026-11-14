@@ -1,0 +1,194 @@
+{
+  "config": {
+    "run_id": "hba1c",
+    "outcome": "hba1c",
+    "fast": false,
+    "ldl_in_main": false,
+    "complete_case": true,
+    "seed": 20260621,
+    "n_trees": 4000,
+    "k_folds": 5,
+    "n_repeats": 5
+  },
+  "replication": {
+    "ancova_est": -0.014458025807597993,
+    "ancova_lo": -0.38406995192117255,
+    "ancova_hi": 0.3551539003059766,
+    "paper_model": [
+      -0.09268730809305874,
+      -0.4529760047576314,
+      0.2676013885715139
+    ],
+    "unadjusted_est": -0.035909090909091015,
+    "paper_adj": [
+      -0.1,
+      -0.46,
+      0.25
+    ],
+    "paper_unadj": [
+      -0.03,
+      -0.42,
+      0.35
+    ]
+  },
+  "ate_forest": {
+    "est": -0.0330542659397467,
+    "lo": -0.5299687104535626,
+    "hi": 0.46386017857406914
+  },
+  "ate_aipw": {
+    "est": -0.05305772409676228,
+    "se": 0.19650194262756032,
+    "lo": -0.4382015316467805,
+    "hi": 0.3320860834532559
+  },
+  "cate_oof": {
+    "mean": -0.0006519201948276855,
+    "sd": 0.08620827328472144,
+    "min": -0.21795801901604253,
+    "max": 0.21872873987656102
+  },
+  "blp": {
+    "beta1": -0.05305772409676222,
+    "beta1_se": 0.1935329431417578,
+    "beta2": -3.482886215270008,
+    "beta2_se": 1.3513480665728566,
+    "p_two_sided": 0.0021511056255514686,
+    "p_one_sided": 0.9989244471872243
+  },
+  "blp_beta2_by_repeat": [
+    -3.482886215270008,
+    -6.193544415295498,
+    -3.453411257674007,
+    -4.31394836277486,
+    -3.311048758104841
+  ],
+  "gates": [
+    {
+      "group": 1,
+      "n": 114.0,
+      "est": 0.5929689563922977,
+      "se": 0.3398193035365117
+    },
+    {
+      "group": 2,
+      "n": 113.0,
+      "est": 0.08168979365456995,
+      "se": 0.32034113661075037
+    },
+    {
+      "group": 3,
+      "n": 114.0,
+      "est": -0.8118631338659814,
+      "se": 0.3379823341378319
+    }
+  ],
+  "gates_g1_minus_g3": {
+    "est": 1.547331323481207,
+    "se": 0.48336608698899447
+  },
+  "rate_autoc": {
+    "est": -0.5827176544180603,
+    "se": 0.1972275018406021,
+    "p_one_sided": 0.9984343507979099
+  },
+  "blp_covariates_joint_p": 0.8016490501649934,
+  "blp_covariates_min_p_holm": 1.0,
+  "ancova_interactions_joint_p": 0.8054919703166322,
+  "ancova_interactions_randomization_p": 0.9065467266366817,
+  "split_stability_top": {
+    "Age (y)": 0.275,
+    "Baseline HbA1c (%)": 0.155,
+    "Systolic BP": 0.11,
+    "BMI": 0.075,
+    "Any prior-year inpatient": 0.075
+  },
+  "attrition_model_auc": 0.6347791126667297,
+  "sd_y": 2.263733697584466,
+  "heterogeneity_detected": false,
+  "prespecified_min_p_holm": 1.0,
+  "added_subgroups_min_p_holm": 0.5157729210799462,
+  "honest_tree_leaf_p": 0.18093839073781137,
+  "honest_splits_min_p": 0.22867760275760451,
+  "n": 341,
+  "n_treat": 165,
+  "sensitivity": [
+    {
+      "analysis": "Main",
+      "n": 341,
+      "ate_aipw": -0.05305772409676228,
+      "blp_beta2": -3.482886215270008,
+      "blp_beta2_se": 1.3513480665728566,
+      "blp_p_one_sided": 0.9989244471872243,
+      "autoc": -0.5827176544180603,
+      "autoc_se": 0.1972275018406021,
+      "autoc_p_one_sided": 0.9984343507979099
+    },
+    {
+      "analysis": "S1 Outcome = 6-mo level",
+      "n": 341,
+      "ate_aipw": -0.04550187150872829,
+      "blp_beta2": -4.684309520922075,
+      "blp_beta2_se": 1.7710497770633602,
+      "blp_p_one_sided": 0.9978545059645103,
+      "autoc": -0.49967403690765766,
+      "autoc_se": 0.17456864619716733,
+      "autoc_p_one_sided": 0.9978973426640441
+    },
+    {
+      "analysis": "S3 IPW for excluded patients",
+      "n": 341,
+      "ate_aipw": 0.030108437080340646,
+      "blp_beta2": -3.8755193272976496,
+      "blp_beta2_se": 1.7629166581458449,
+      "blp_p_one_sided": 0.9944946620265382,
+      "autoc": -0.49641916527531127,
+      "autoc_se": 0.18971103273239728,
+      "autoc_p_one_sided": 0.9955609413247135
+    },
+    {
+      "analysis": "S4 Baseline measured <=180 d before consent",
+      "n": 276,
+      "ate_aipw": 0.0331001888528228,
+      "blp_beta2": -2.8546144450690996,
+      "blp_beta2_se": 1.9060608275593383,
+      "blp_p_one_sided": 0.9328880624246297,
+      "autoc": -0.17037314458675346,
+      "autoc_se": 0.23281762248151155,
+      "autoc_p_one_sided": 0.7678510157116608
+    },
+    {
+      "analysis": "PC injected contrast 0.57 pp = 0.25 SD (older vs younger)",
+      "n": 341,
+      "ate_aipw": -0.020582758780822972,
+      "blp_beta2": -1.1909262783087344,
+      "blp_beta2_se": 1.1577579260979047,
+      "blp_p_one_sided": 0.8481776265948742,
+      "autoc": -0.21790509124088964,
+      "autoc_se": 0.1706442407041821,
+      "autoc_p_one_sided": 0.899191010033306
+    },
+    {
+      "analysis": "PC injected contrast 1.13 pp = 0.5 SD (older vs younger)",
+      "n": 341,
+      "ate_aipw": -0.04355482922127358,
+      "blp_beta2": 1.1088301041502466,
+      "blp_beta2_se": 0.730029772956288,
+      "blp_p_one_sided": 0.06439592397952254,
+      "autoc": 0.17079823396382654,
+      "autoc_se": 0.1544328065057353,
+      "autoc_p_one_sided": 0.1343694958606665
+    },
+    {
+      "analysis": "PC injected contrast 2.26 pp = 1 SD (older vs younger)",
+      "n": 341,
+      "ate_aipw": -0.08432685308188055,
+      "blp_beta2": 1.5058514632313929,
+      "blp_beta2_se": 0.289142469615485,
+      "blp_p_one_sided": 9.544794188354189e-08,
+      "autoc": 0.6979703735989935,
+      "autoc_se": 0.17394283795655727,
+      "autoc_p_one_sided": 3.0021442378402874e-05
+    }
+  ]
+}

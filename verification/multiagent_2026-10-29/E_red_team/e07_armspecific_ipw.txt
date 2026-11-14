@@ -1,0 +1,25 @@
+
+hba1c: N=341, arm-specific IPW range 0.75-2.17
+  unweighted         overall effect -0.139 (p 0.536)
+  arm-specific IPW   overall effect +0.029 (p 0.903)
+
+weight: N=392, arm-specific IPW range 0.85-1.84
+  unweighted         overall effect +0.956 (p 0.110)
+  arm-specific IPW   overall effect +1.217 (p 0.043)
+                                      inter                           p           
+weights                    arm-specific IPW unweighted arm-specific IPW unweighted
+outcome subgroup                                                                  
+hba1c   drug_insulin_0mo             -0.086     -0.088            0.860      0.848
+        drug_metformin_0mo            0.354      0.206            0.458      0.644
+        ed_i_0mo                     -0.649     -0.633            0.188      0.174
+        hba1c_cat_control             0.076     -0.016            0.868      0.971
+        ip_i_0mo                     -0.910     -0.851            0.114      0.116
+        male                         -0.033      0.075            0.947      0.869
+        rural_site                    0.054     -0.097            0.917      0.841
+weight  drug_insulin_0mo             -2.554     -2.434            0.033      0.040
+        drug_metformin_0mo           -1.410     -1.123            0.252      0.363
+        ed_i_0mo                     -3.627     -3.683            0.003      0.002
+        hba1c_cat_control            -1.629     -1.667            0.177      0.163
+        ip_i_0mo                     -0.489     -0.413            0.745      0.780
+        male                         -2.035     -2.002            0.094      0.098
+        rural_site                   -0.608     -0.522            0.651      0.695

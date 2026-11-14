@@ -1,0 +1,27 @@
+306 tasks to run with 3 workers
+FAILED ('weight', 7, 'null') <python>\Lib\concurrent\futures\_base.py", line 402, in __get_result
+    raise self._exception
+concurrent.futures.process.BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+
+Traceback (most recent call last):
+  File "<project>\verification\multiagent_2026-10-29\E_red_team\scripts\e03_placebo_planted.py", line 141, in main
+    r = f.result()
+  File "<python>\Lib\concurrent\futures\_base.py", line 453, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "<python>\Lib\concurrent\futures\_base.py", line 402, in __get_result
+    raise self._exception
+concurrent.futures.process.BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<project>\verification\multiagent_2026-10-29\E_red_team\scripts\e03_placebo_planted.py", line 156, in <module>
+    main()
+    ~~~~^^
+  File "<project>\verification\multiagent_2026-10-29\E_red_team\scripts\e03_placebo_planted.py", line 150, in main
+    futs[ex.submit(run_task, s)] = s
+         ~~~~~~~~~^^^^^^^^^^^^^
+  File "<python>\Lib\concurrent\futures\process.py", line 793, in submit
+    raise BrokenProcessPool(self._broken)
+concurrent.futures.process.BrokenProcessPool: A child process terminated abruptly, the process pool is not usable anymore

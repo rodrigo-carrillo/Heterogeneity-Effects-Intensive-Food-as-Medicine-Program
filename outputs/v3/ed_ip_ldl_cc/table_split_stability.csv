@@ -1,0 +1,16 @@
+,share_of_root_splits
+Systolic BP,0.485
+Baseline HbA1c (%),0.12
+Age (y),0.085
+"Days, baseline A1c test to consent",0.065
+Prior-year outpatient visits,0.06
+Diastolic BP,0.04
+Insulin,0.025
+BMI,0.025
+GLP-1 RA,0.025
+Metformin,0.025
+LDL,0.015
+Any prior-year inpatient,0.015
+Other glucose-lowering,0.005
+Male,0.005
+Prior-year ED/IP visits,0.005

@@ -1,0 +1,31 @@
+                                0      1       2       3      4      5      6      7
+outcome                     hba1c  hba1c  weight  weight    sbp    sbp  ed_ip  ed_ip
+ldl                         False   True   False    True  False   True  False   True
+n_inc                         341    285     392     321    371    308    456    366
+inc_ctrl                    0.749  0.617    0.86   0.706  0.804  0.668  0.983  0.787
+inc_trt                     0.717  0.609   0.826   0.674  0.791  0.657  0.978  0.787
+p_arm                       0.442  0.854   0.322   0.449  0.728  0.792  0.713  0.994
+p_arm_x_X_joint             0.008  0.004   0.693   0.527  0.721  0.454  0.032   0.09
+p_arm_x_hba1c_cat_control   0.552  0.815   0.995   0.386  0.875  0.519  0.838  0.194
+p_arm_x_rural_site          0.784  0.755   0.713   0.982  0.715  0.845   0.87  0.719
+p_arm_x_male                0.345  0.251   0.858    0.74  0.692  0.411   0.57  0.103
+p_arm_x_ip_i_0mo            0.562  0.218   0.125   0.159  0.272  0.389  0.977  0.394
+p_arm_x_ed_i_0mo            0.002  0.002   0.607   0.652  0.692  0.557  0.854  0.221
+p_arm_x_drug_insulin_0mo    0.157  0.196   0.724   0.431  0.791  0.516  0.767   0.15
+p_arm_x_drug_metformin_0mo  0.879  0.521   0.781   0.707  0.226  0.689  0.649  0.347
+
+weight: inclusion rate by prior ED x arm
+                    size   mean
+ed_i_0mo treat_now             
+0        0           141  0.837
+         1           133  0.782
+1        0            94  0.894
+         1            97  0.887
+
+hba1c: inclusion rate by prior ED x arm
+                    size   mean
+ed_i_0mo treat_now             
+0        0           141  0.674
+         1           133  0.744
+1        0            94  0.862
+         1            97  0.680

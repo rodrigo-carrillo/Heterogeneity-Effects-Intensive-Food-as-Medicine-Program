@@ -1,0 +1,96 @@
+                                   0        1        2        3
+outcome                        hba1c   weight      sbp    ed_ip
+n                                341      392      371      456
+n_treat                          165      190      182      225
+ate                          -0.0853   0.8882   0.2487  -5.8315
+ate_lo                       -0.4785  -0.2823  -3.6607 -13.8877
+ate_hi                        0.3079   2.0588   4.1581   2.2247
+ate_p                         0.6707   0.1369   0.9008    0.156
+ate_median_agg               -0.0913   0.8726   0.2401  -6.1357
+ate_median_agg_lo            -0.4882  -0.3035  -3.6802 -14.2157
+ate_median_agg_hi             0.3055   2.0486   4.1603   1.9444
+ate_e_full465                -0.0953   0.8797   0.2286  -5.8528
+diff_means                   -0.1771   0.9593   1.1652  -5.2641
+blp_beta2                    -4.3921  -0.6456  -3.1339  -2.2533
+blp_p_one_sided               0.9974    0.719   0.9797   0.9708
+autoc                        -0.5326  -0.1505   -3.426  -7.2563
+rate_p_one_sided              0.9976   0.6086   0.9574   0.9618
+heterogeneity_detected         False    False    False    False
+gates_low                     0.6641   1.1934   5.5027   4.9499
+gates_mid                    -0.2006   0.9943  -1.1692  -8.9232
+gates_high                   -0.5892   0.1731  -1.9436 -13.1058
+interaction_wald             15.2483  30.2234  36.1505  30.7975
+interaction_df                    21       22       21       21
+interaction_p_asymptotic      0.8103   0.1131    0.021   0.0771
+interaction_p_randomization    0.913   0.2984    0.077   0.2124
+blp_covariates_joint_p        0.8332   0.0992   0.0272   0.0066
+   outcome      subgroup            variable  level    n  n_treat     est     se      lo      hi  diff_1_minus_0  p_interaction  p_holm
+0    hba1c  hba1c_ge_9.5   hba1c_cat_control      0  158       75  -0.083  0.215  -0.504   0.339          -0.005          0.990   1.000
+1    hba1c  hba1c_ge_9.5   hba1c_cat_control      1  183       90  -0.088  0.325  -0.725   0.550          -0.005          0.990   1.000
+2    hba1c    rural_site          rural_site      0  238      115  -0.145  0.247  -0.628   0.338           0.197          0.641   1.000
+3    hba1c    rural_site          rural_site      1  103       50   0.052  0.343  -0.620   0.724           0.197          0.641   1.000
+4    hba1c          male                male      0  182       93   0.081  0.285  -0.477   0.638          -0.356          0.374   1.000
+5    hba1c          male                male      1  159       72  -0.275  0.281  -0.826   0.276          -0.356          0.374   1.000
+6    hba1c      prior_ip            ip_i_0mo      0  256      120   0.097  0.228  -0.349   0.544          -0.733          0.123   0.861
+7    hba1c      prior_ip            ip_i_0mo      1   85       45  -0.635  0.417  -1.453   0.182          -0.733          0.123   0.861
+8    hba1c      prior_ed            ed_i_0mo      0  194       99   0.073  0.253  -0.422   0.568          -0.366          0.373   1.000
+9    hba1c      prior_ed            ed_i_0mo      1  147       66  -0.294  0.325  -0.931   0.343          -0.366          0.373   1.000
+10   hba1c       insulin    drug_insulin_0mo      0  168       78  -0.039  0.282  -0.591   0.514          -0.092          0.819   1.000
+11   hba1c       insulin    drug_insulin_0mo      1  173       87  -0.131  0.286  -0.692   0.430          -0.092          0.819   1.000
+12   hba1c     metformin  drug_metformin_0mo      0  168       81  -0.084  0.266  -0.606   0.438          -0.003          0.995   1.000
+13   hba1c     metformin  drug_metformin_0mo      1  173       84  -0.087  0.300  -0.674   0.501          -0.003          0.995   1.000
+14  weight  hba1c_ge_9.5   hba1c_cat_control      0  172       83   1.784  0.870   0.079   3.489          -1.596          0.181   0.725
+15  weight  hba1c_ge_9.5   hba1c_cat_control      1  220      107   0.188  0.817  -1.413   1.790          -1.596          0.181   0.725
+16  weight    rural_site          rural_site      0  273      132   1.099  0.695  -0.263   2.461          -0.694          0.607   1.000
+17  weight    rural_site          rural_site      1  119       58   0.405  1.156  -1.860   2.670          -0.694          0.607   1.000
+18  weight          male                male      0  211      105   1.759  0.855   0.084   3.434          -1.886          0.112   0.558
+19  weight          male                male      1  181       85  -0.127  0.821  -1.735   1.482          -1.886          0.112   0.558
+20  weight      prior_ip            ip_i_0mo      0  296      140   0.962  0.669  -0.350   2.273          -0.301          0.838   1.000
+21  weight      prior_ip            ip_i_0mo      1   96       50   0.661  1.307  -1.900   3.222          -0.301          0.838   1.000
+22  weight      prior_ed            ed_i_0mo      0  222      104   2.537  0.744   1.078   3.995          -3.801          0.002   0.012
+23  weight      prior_ed            ed_i_0mo      1  170       86  -1.264  0.954  -3.133   0.605          -3.801          0.002   0.012
+24  weight       insulin    drug_insulin_0mo      0  197       95   2.217  0.780   0.689   3.745          -2.671          0.025   0.148
+25  weight       insulin    drug_insulin_0mo      1  195       95  -0.454  0.898  -2.214   1.306          -2.671          0.025   0.148
+26  weight     metformin  drug_metformin_0mo      0  189       90   1.543  0.886  -0.193   3.279          -1.264          0.291   0.874
+27  weight     metformin  drug_metformin_0mo      1  203      100   0.279  0.806  -1.301   1.859          -1.264          0.291   0.874
+28     sbp  hba1c_ge_9.5   hba1c_cat_control      0  167       82  -1.173  3.015  -7.082   4.736           2.586          0.520   1.000
+29     sbp  hba1c_ge_9.5   hba1c_cat_control      1  204      100   1.413  2.662  -3.806   6.631           2.586          0.520   1.000
+30     sbp    rural_site          rural_site      0  253      124   2.343  2.376  -2.314   7.000          -6.585          0.130   0.648
+31     sbp    rural_site          rural_site      1  118       58  -4.242  3.638 -11.372   2.888          -6.585          0.130   0.648
+32     sbp          male                male      0  198      101   0.203  2.796  -5.278   5.684           0.098          0.980   1.000
+33     sbp          male                male      1  173       81   0.301  2.847  -5.278   5.880           0.098          0.980   1.000
+34     sbp      prior_ip            ip_i_0mo      0  280      134  -0.171  2.298  -4.675   4.332           1.712          0.712   1.000
+35     sbp      prior_ip            ip_i_0mo      1   91       48   1.541  4.037  -6.372   9.454           1.712          0.712   1.000
+36     sbp      prior_ed            ed_i_0mo      0  210      100   1.877  2.610  -3.238   6.992          -3.751          0.354   1.000
+37     sbp      prior_ed            ed_i_0mo      1  161       82  -1.875  3.090  -7.931   4.181          -3.751          0.354   1.000
+38     sbp       insulin    drug_insulin_0mo      0  184       91   4.149  2.685  -1.114   9.413          -7.739          0.051   0.359
+39     sbp       insulin    drug_insulin_0mo      1  187       91  -3.589  2.926  -9.324   2.145          -7.739          0.051   0.359
+40     sbp     metformin  drug_metformin_0mo      0  178       84  -3.785  2.950  -9.568   1.998           7.754          0.052   0.359
+41     sbp     metformin  drug_metformin_0mo      1  193       98   3.969  2.681  -1.285   9.223           7.754          0.052   0.359
+42   ed_ip  hba1c_ge_9.5   hba1c_cat_control      0  199       99  -0.356  6.347 -12.796  12.084          -9.716          0.243   1.000
+43   ed_ip  hba1c_ge_9.5   hba1c_cat_control      1  257      126 -10.071  5.384 -20.625   0.482          -9.716          0.243   1.000
+44   ed_ip    rural_site          rural_site      0  327      162  -4.198  4.815 -13.635   5.239          -5.774          0.533   1.000
+45   ed_ip    rural_site          rural_site      1  129       63  -9.972  7.902 -25.460   5.516          -5.774          0.533   1.000
+46   ed_ip          male                male      0  249      127 -10.667  5.618 -21.677   0.344          10.652          0.196   1.000
+47   ed_ip          male                male      1  207       98  -0.015  6.017 -11.808  11.778          10.652          0.196   1.000
+48   ed_ip      prior_ip            ip_i_0mo      0  349      166  -6.514  4.580 -15.490   2.462           2.908          0.777   1.000
+49   ed_ip      prior_ip            ip_i_0mo      1  107       59  -3.606  9.188 -21.613  14.402           2.908          0.777   1.000
+50   ed_ip      prior_ed            ed_i_0mo      0  266      129  -2.865  4.907 -12.482   6.752          -7.120          0.409   1.000
+51   ed_ip      prior_ed            ed_i_0mo      1  190       96  -9.985  7.085 -23.871   3.902          -7.120          0.409   1.000
+52   ed_ip       insulin    drug_insulin_0mo      0  229      113  -0.190  6.012 -11.975  11.594         -11.332          0.167   1.000
+53   ed_ip       insulin    drug_insulin_0mo      1  227      112 -11.522  5.590 -22.479  -0.565         -11.332          0.167   1.000
+54   ed_ip     metformin  drug_metformin_0mo      0  228      112 -12.784  5.687 -23.932  -1.637          13.906          0.090   0.630
+55   ed_ip     metformin  drug_metformin_0mo      1  228      113   1.122  5.912 -10.467  12.710          13.906          0.090   0.630
+   outcome  delta_sd  delta_units             older_def  blp_beta2  blp_p_one_sided   autoc  rate_p_one_sided  detected
+0    hba1c      0.25       0.5659  age >= median (55.0)    -4.7890           0.9989 -0.5789            0.9984     False
+1    hba1c      0.50       1.1319  age >= median (55.0)    -2.5346           0.9586 -0.3132            0.9481     False
+2    hba1c      1.00       2.2637  age >= median (55.0)     1.5872           0.0008  0.4646            0.0025      True
+3   weight      0.25       1.5048  age >= median (55.0)    -0.3386           0.6220 -0.1810            0.6234     False
+4   weight      0.50       3.0096  age >= median (55.0)     0.4563           0.3282  0.0940            0.4315     False
+5   weight      1.00       6.0192  age >= median (55.0)     1.5793           0.0001  1.5882            0.0005      True
+6      sbp      0.25       5.2265  age >= median (55.0)    -2.4542           0.9389 -2.3564            0.8828     False
+7      sbp      0.50      10.4531  age >= median (55.0)     0.3552           0.3753  0.4687            0.3973     False
+8      sbp      1.00      20.9061  age >= median (55.0)     1.5723           0.0000  4.1969            0.0081      True
+9    ed_ip      0.25      11.7981  age >= median (55.0)    -1.7631           0.9424 -6.6895            0.9487     False
+10   ed_ip      0.50      23.5961  age >= median (55.0)     0.0706           0.4693 -2.1542            0.6960     False
+11   ed_ip      1.00      47.1922  age >= median (55.0)     1.4279           0.0000  9.0007            0.0159      True

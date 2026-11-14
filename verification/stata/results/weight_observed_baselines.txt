@@ -1,0 +1,4 @@
+RESULT month=6 unit=kg45 N_pat=395 b= 0.835 lo=-0.319 hi= 1.988 p=0.1556
+RESULT month=6 unit=kg N_pat=395 b= 0.841 lo=-0.321 hi= 2.004 p=0.1556
+RESULT month=12 unit=kg45 N_pat=365 b= 0.876 lo=-0.595 hi= 2.347 p=0.2424
+RESULT month=12 unit=kg N_pat=365 b= 0.883 lo=-0.600 hi= 2.366 p=0.2424

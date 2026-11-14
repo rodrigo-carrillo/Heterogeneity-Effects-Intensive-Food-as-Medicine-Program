@@ -1,0 +1,41 @@
+<project>/verification/independent_agent/v3_subgroups.py:10: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  D["stratum"] = D.rural_site * 2 + D.hba1c_cat_control
+<project>/verification/independent_agent/v3_subgroups.py:11: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  D["days_a1c_consent"] = D.consent_date - D.hba1c_date_0mo
+ED split in weight sample: {0: 225, 1: 170} treated by ED: {0: 106, 1: 86}
+
+######## Weight change (kg, data factor 0.45): N=395, treated=192
+overall stratified-ATE (AIPW): 0.891 (se 0.596)
+               var  n0  n1  aipw_S0  aipw_S0_lo  aipw_S0_hi  aipw_S1  aipw_S1_lo  aipw_S1_hi  hajek_S0  hajek_S1  ols_int  p_ols  aipw_int  p_aipw  p_perm  holm_p_ols  holm_p_aipw  holm_p_perm
+ hba1c_cat_control 173 222   1.7429      0.0325      3.4532   0.2278     -1.3672      1.8227    1.8666    0.2168  -1.6514 0.1611   -1.5151  0.2042  0.1703      0.6446       0.8166       0.6811
+        rural_site 276 119   1.1251     -0.2255      2.4758   0.3491     -1.9473      2.6455    1.0906    0.5885  -0.5033 0.7029   -0.7760  0.5681  0.7069      1.0000       1.0000       1.0000
+              male 212 183   1.7593      0.0858      3.4327  -0.1141     -1.7221      1.4939    1.9517   -0.2390  -1.9832 0.0959   -1.8733  0.1136  0.0952      0.4795       0.5681       0.4760
+          ip_i_0mo 299  96   1.1085     -0.1873      2.4043   0.2149     -2.4108      2.8407    1.0489    0.4398  -0.4011 0.7838   -0.8936  0.5497  0.7879      1.0000       1.0000       1.0000
+          ed_i_0mo 225 170   2.4631      1.0040      3.9221  -1.1889     -3.0588      0.6810    2.5671   -1.1812  -3.6144 0.0026   -3.6519  0.0025  0.0031      0.0184       0.0178       0.0217
+  drug_insulin_0mo 199 196   2.4453      0.9214      3.9692  -0.6864     -2.4397      1.0669    2.1194   -0.2713  -2.4392 0.0368   -3.1317  0.0082  0.0434      0.2206       0.0494       0.2604
+drug_metformin_0mo 191 204   1.6733     -0.0440      3.3905   0.1593     -1.4317      1.7502    1.7362    0.2077  -1.1415 0.3480   -1.5140  0.2049  0.3407      1.0000       0.8166       1.0000
+OLS T x ED with all baseline covariates: int=-3.710 se=1.195 p=0.0019
+Drop |dw|>20kg (n=391): OLS int -3.272 p=0.0039
+dw distribution: {'count': 395.0, 'mean': -0.82, 'std': 5.95, 'min': -22.05, '25%': -4.05, '50%': -0.45, '75%': 2.7, 'max': 20.7}
+
+######## HbA1c at 6 mo (level; baseline in covariates): N=349, treated=170
+overall stratified-ATE (AIPW): 0.026 (se 0.185)
+               var  n0  n1  aipw_S0  aipw_S0_lo  aipw_S0_hi  aipw_S1  aipw_S1_lo  aipw_S1_hi  hajek_S0  hajek_S1  ols_int  p_ols  aipw_int  p_aipw  p_perm  holm_p_ols  holm_p_aipw  holm_p_perm
+ hba1c_cat_control 163 186  -0.0193     -0.4445      0.4058   0.0665     -0.5056      0.6386   -0.0410   -0.0770  -0.0363 0.9199    0.0858  0.8135  0.9192      1.0000       1.0000       1.0000
+        rural_site 244 105  -0.1893     -0.6363      0.2578   0.5275     -0.0810      1.1361   -0.2266    0.3264   0.5546 0.1453    0.7168  0.0628  0.1436      0.8717       0.4397       0.8614
+              male 187 162   0.3199     -0.1949      0.8347  -0.3124     -0.8187      0.1938    0.3199   -0.4925  -0.7006 0.0594   -0.6323  0.0861  0.0616      0.4161       0.5165       0.4311
+          ip_i_0mo 264  85   0.1393     -0.2674      0.5461  -0.3244     -1.1179      0.4692    0.1078   -0.6342  -0.5870 0.1967   -0.4637  0.3081  0.2038      0.9833       1.0000       1.0000
+          ed_i_0mo 201 148   0.0785     -0.3480      0.5049  -0.0443     -0.6775      0.5888    0.1513   -0.2457  -0.2381 0.5365   -0.1228  0.7525  0.5267      1.0000       1.0000       1.0000
+  drug_insulin_0mo 173 176   0.0581     -0.4431      0.5594  -0.0048     -0.5320      0.5224    0.0049   -0.1572  -0.2096 0.5664   -0.0630  0.8653  0.5769      1.0000       1.0000       1.0000
+drug_metformin_0mo 173 176   0.0476     -0.4370      0.5322   0.0056     -0.5365      0.5476    0.1295   -0.2397  -0.0940 0.7996   -0.0420  0.9098  0.7926      1.0000       1.0000       1.0000
+
+######## HbA1c change: N=349, treated=170
+overall stratified-ATE (AIPW): 0.012 (se 0.185)
+               var  n0  n1  aipw_S0  aipw_S0_lo  aipw_S0_hi  aipw_S1  aipw_S1_lo  aipw_S1_hi  hajek_S0  hajek_S1  ols_int  p_ols  aipw_int  p_aipw  p_perm  holm_p_ols  holm_p_aipw  holm_p_perm
+ hba1c_cat_control 163 186  -0.0201     -0.4437      0.4035   0.0402     -0.5321      0.6125   -0.1397   -0.1380   0.0021 0.9961    0.0603  0.8681  0.9964      1.0000       1.0000       1.0000
+        rural_site 244 105  -0.1956     -0.6430      0.2518   0.4946     -0.1111      1.1003   -0.1334   -0.1513  -0.0184 0.9694    0.6902  0.0724  0.9632      1.0000       0.5069       1.0000
+              male 187 162   0.3117     -0.2014      0.8249  -0.3339     -0.8412      0.1733   -0.1415   -0.1270   0.0201 0.9641   -0.6456  0.0795  0.9612      1.0000       0.5069       1.0000
+          ip_i_0mo 264  85   0.1339     -0.2715      0.5393  -0.3664     -1.1633      0.4304    0.0237   -0.6027  -0.8440 0.1180   -0.5003  0.2727  0.1264      0.8261       1.0000       0.8846
+          ed_i_0mo 201 148   0.0671     -0.3596      0.4938  -0.0628     -0.6946      0.5690   -0.1108   -0.1254  -0.5512 0.2307   -0.1299  0.7385  0.2212      1.0000       1.0000       1.0000
+  drug_insulin_0mo 173 176   0.0241     -0.4785      0.5266   0.0002     -0.5249      0.5254   -0.1006   -0.1397  -0.0428 0.9241   -0.0238  0.9487  0.9242      1.0000       1.0000       1.0000
+drug_metformin_0mo 173 176   0.0310     -0.4552      0.5173  -0.0066     -0.5464      0.5331   -0.4655    0.1820   0.2301 0.6005   -0.0377  0.9190  0.5989      1.0000       1.0000       1.0000

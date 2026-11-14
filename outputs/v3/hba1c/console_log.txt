@@ -1,0 +1,262 @@
+
+==============================================================================
+§1 Data and analytic sample
+==============================================================================
+Loaded data\raw\dataverse_files\analysis_sample.csv: 465 patients x 157 columns
+Run: hba1c  (outcome HbA1c change at 6 mo; LDL in X: False; complete case, no imputation)
+Set 1 placeholder triglyceride value(s) (9999999) to missing
+Weight in kg recomputed as weight_lb_val / 2.20462 (posted kg column used 2.2222)
+Baseline lipids missing (of 465): {'ldl_val_0mo': 92, 'trigly_val_0mo': 101, 'total_chol_val_0mo': 102, 'hdl_val_0mo': 104}; marker used: ldl_val_0mo
+Analytic sample: N=341 (treatment 165, control 176); paper's 6-mo sample for this outcome: 349
+Excluded from the 465 randomized-and-retained: 26.7% overall; by arm {0: 0.251, 1: 0.283}
+
+Randomization strata in the analytic sample (n, treated fraction):
+                 size   mean
+urban, A1c<9.5    109  0.486
+urban, A1c>=9.5   129  0.481
+rural, A1c<9.5     49  0.449
+rural, A1c>=9.5    54  0.519
+Control  : mean HbA1c change -1.329 (SD 2.35) pp
+Treatment: mean HbA1c change -1.506 (SD 2.17) pp
+Unadjusted difference in Y: -0.177 pp
+
+==============================================================================
+§2 Sanity check: reproduce the published estimate
+==============================================================================
+Unadjusted difference in 6-mo level (analytic sample): -0.04 (-0.42 to +0.35)   paper: -0.03 (-0.42 to +0.35)
+Paper model (first differences):     -0.09 (-0.45 to +0.27)   paper: -0.10 (-0.46 to +0.25)
+ANCOVA, prespecified covariates:     -0.01 (-0.38 to +0.36)
+
+==============================================================================
+§3 Baseline balance in the analytic sample (standardized mean differences)
+==============================================================================
+           variable  mean_treat  mean_control    smd  pct_missing
+                age      55.830        54.852  0.087        0.000
+               male       0.436         0.494 -0.116        0.000
+           hispanic       0.091         0.085  0.020        0.000
+ race_nonhisp_black       0.067         0.085 -0.070        0.000
+         rural_site       0.303         0.301  0.004        0.000
+      hba1c_val_0mo      10.295        10.154  0.069        0.000
+days_a1c_to_consent     103.582       107.869 -0.043        0.000
+        bmi_val_0mo      36.592        38.192 -0.168        0.000
+        sys_val_0mo     125.788       127.659 -0.101        0.000
+       dias_val_0mo      73.442        74.182 -0.064        0.000
+        hdl_val_0mo      39.975        40.430 -0.034       19.648
+        ldl_val_0mo      98.817        94.806  0.094       16.422
+     trigly_val_0mo     277.388       263.839  0.045       18.768
+   drug_insulin_0mo       0.527         0.489  0.077        0.000
+ drug_metformin_0mo       0.509         0.506  0.007        0.000
+      drug_glp1_0mo       0.303         0.301  0.004        0.000
+           op_n_0mo       8.152         8.619 -0.062        0.000
+     ed_or_ip_n_0mo       1.255         1.739 -0.182        0.000
+|SMD| > 0.1 flags chance imbalance worth adjusting for (all are in X).
+
+==============================================================================
+§4 Candidate effect modifiers
+==============================================================================
+21 features: ['age', 'hba1c_val_0mo', 'days_a1c_to_consent', 'bmi_val_0mo', 'sys_val_0mo', 'dias_val_0mo', 'op_n_0mo', 'ed_or_ip_n_0mo', 'male', 'hispanic', 'race_nonhisp_black', 'rural_site', 'hba1c_cat_control', 'drug_insulin_0mo', 'drug_metformin_0mo', 'drug_glp1_0mo', 'drug_sulf_0mo', 'drug_other_0mo', 'drug_any_db_0mo', 'ip_i_0mo', 'ed_i_0mo']
+Events-per-variable analogue: N/p = 16.2 patients per feature
+
+==============================================================================
+§5 Average treatment effect
+==============================================================================
+Causal-forest ATE: -0.03 (-0.53 to +0.46) pp
+
+==============================================================================
+§6 Cross-fitting (out-of-fold CATE and AIPW scores)
+==============================================================================
+  repeat 2/5 done
+  repeat 1/5 done
+  repeat 3/5 done
+  repeat 4/5 done
+  repeat 5/5 done
+
+AIPW ATE (median over repeats): -0.05 (-0.44 to +0.33) pp
+Out-of-fold CATE: mean -0.001, SD 0.086, range [-0.22, +0.22]
+Share with predicted benefit (tau<0): 51.0%  (descriptive only; not evidence of heterogeneity)
+
+==============================================================================
+§7 Omnibus heterogeneity tests (out-of-fold)
+==============================================================================
+BLP calibration test (median across repeats):
+  beta1 (mean forest prediction): -0.053 (SE 0.194)
+  beta2 (differential prediction): -3.483 (SE 1.351); one-sided p = 0.999; two-sided p = 0.002
+  per-repeat beta2: [-3.48, -6.19, -3.45, -4.31, -3.31]
+  Interpretation: beta2 <= 0 means the out-of-fold CATE ranking does NOT
+  track who actually responds (no detectable heterogeneity). A significantly
+  NEGATIVE beta2 indicates the forest is fitting noise, not signal.
+
+GATES by tercile of predicted CATE (median across repeats; G1 = most predicted benefit):
+  G1: n=114  +0.59 (-0.07 to +1.26)
+  G2: n=113  +0.08 (-0.55 to +0.71)
+  G3: n=114  -0.81 (-1.47 to -0.15)
+  G1 - G3: +1.55 (+0.60 to +2.49) (negative = predicted responders really do better)
+
+RATE (AUTOC), benefit = reduction in HbA1c change: -0.583 (SE 0.197), one-sided p (AUTOC>0) = 0.998
+
+==============================================================================
+§8 Effect modifiers: forest importance and BLP on covariates
+==============================================================================
+Causal-forest split importance (top 10):
+age                    0.174
+hba1c_val_0mo          0.153
+bmi_val_0mo            0.125
+days_a1c_to_consent    0.123
+sys_val_0mo            0.100
+dias_val_0mo           0.077
+op_n_0mo               0.074
+ed_or_ip_n_0mo         0.042
+ed_i_0mo               0.025
+male                   0.024
+
+BLP of AIPW scores on covariates (continuous per 1 SD; negative = larger benefit):
+                                                  label   coef     se      p  p_holm   p_bh
+drug_sulf_0mo                              Sulfonylurea -0.857  0.501  0.087     1.0  0.945
+age                                             Age (y) -0.341  0.208  0.101     1.0  0.945
+male                                               Male -0.585  0.407  0.150     1.0  0.945
+rural_site                                   Rural site  0.532  0.432  0.218     1.0  0.945
+drug_metformin_0mo                            Metformin -0.468  0.446  0.293     1.0  0.945
+drug_glp1_0mo                                  GLP-1 RA -0.413  0.421  0.327     1.0  0.945
+ip_i_0mo                       Any prior-year inpatient -0.519  0.531  0.329     1.0  0.945
+hispanic                                       Hispanic  0.590  0.724  0.415     1.0  0.945
+op_n_0mo                   Prior-year outpatient visits -0.144  0.227  0.524     1.0  0.945
+drug_insulin_0mo                                Insulin -0.273  0.449  0.544     1.0  0.945
+ed_i_0mo                              Any prior-year ED -0.312  0.564  0.580     1.0  0.945
+drug_any_db_0mo                       Any diabetes drug  0.424  0.954  0.657     1.0  0.945
+sys_val_0mo                                 Systolic BP  0.101  0.236  0.668     1.0  0.945
+hba1c_val_0mo                        Baseline HbA1c (%) -0.150  0.497  0.762     1.0  0.945
+drug_other_0mo                   Other glucose-lowering  0.117  0.429  0.785     1.0  0.945
+dias_val_0mo                               Diastolic BP -0.063  0.233  0.786     1.0  0.945
+race_nonhisp_black                   Non-Hispanic Black  0.185  0.998  0.853     1.0  0.945
+ed_or_ip_n_0mo                  Prior-year ED/IP visits  0.057  0.363  0.875     1.0  0.945
+bmi_val_0mo                                         BMI -0.030  0.193  0.876     1.0  0.945
+hba1c_cat_control                  HbA1c stratum >=9.5%  0.071  0.735  0.923     1.0  0.945
+days_a1c_to_consent  Days, baseline A1c test to consent  0.014  0.202  0.945     1.0  0.945
+Joint Wald test that all covariate coefficients = 0: p = 0.802
+ANCOVA joint test of all treatment x covariate interactions: p = 0.805
+  randomization p for the same statistic (2000 stratified re-randomizations, constant effect -0.00): p = 0.907
+
+==============================================================================
+§9 Pre-specified subgroups (AIPW within subgroup)
+==============================================================================
+              family                         subgroup                 level   n  n_treat    est     lo    hi  paper_model_est  p_interaction  p_holm
+ Doyle pre-specified                   Baseline HbA1c                 <9.5% 158       75 -0.047 -0.470 0.376           -0.076          0.978   1.000
+ Doyle pre-specified                   Baseline HbA1c                >=9.5% 183       90 -0.036 -0.648 0.576           -0.146          0.978   1.000
+ Doyle pre-specified                             Site                 Urban 238      115 -0.134 -0.608 0.340           -0.172          0.446   1.000
+ Doyle pre-specified                             Site                 Rural 103       50  0.174 -0.461 0.808            0.180          0.446   1.000
+ Doyle pre-specified                              Sex                Female 182       93  0.207 -0.332 0.747            0.156          0.170   1.000
+ Doyle pre-specified                              Sex                  Male 159       72 -0.325 -0.862 0.212           -0.360          0.170   1.000
+ Doyle pre-specified   Prior-year inpatient admission                    No 256      120  0.123 -0.309 0.556            0.075          0.157   1.000
+ Doyle pre-specified   Prior-year inpatient admission                   Yes  85       45 -0.536 -1.339 0.267           -0.622          0.157   1.000
+ Doyle pre-specified              Prior-year ED visit                    No 194       99  0.106 -0.366 0.577            0.126          0.398   1.000
+ Doyle pre-specified              Prior-year ED visit                   Yes 147       66 -0.234 -0.866 0.397           -0.266          0.398   1.000
+ Doyle pre-specified               Insulin prescribed                    No 168       78  0.046 -0.488 0.579            0.051          0.660   1.000
+ Doyle pre-specified               Insulin prescribed                   Yes 173       87 -0.125 -0.673 0.422           -0.219          0.660   1.000
+ Doyle pre-specified             Metformin prescribed                    No 168       81  0.018 -0.501 0.538           -0.058          0.764   1.000
+ Doyle pre-specified             Metformin prescribed                   Yes 173       84 -0.099 -0.659 0.462           -0.236          0.764   1.000
+Added (not in Doyle)                              Age                 <65 y 265      128  0.083 -0.370 0.537           -0.072          0.172   0.516
+Added (not in Doyle)                              Age                >=65 y  76       37 -0.475 -1.135 0.185           -0.067          0.172   0.516
+Added (not in Doyle)                   Race/ethnicity Hispanic or non-White  61       28  0.535 -0.485 1.554            0.139          0.211   0.516
+Added (not in Doyle)                   Race/ethnicity    Non-Hispanic White 280      137 -0.166 -0.575 0.242           -0.205          0.211   0.516
+Added (not in Doyle) Baseline A1c test before consent                <=90 d 196      101  0.003 -0.524 0.530           -0.128          0.789   0.789
+Added (not in Doyle) Baseline A1c test before consent                 >90 d 145       64 -0.101 -0.651 0.449           -0.132          0.789   0.789
+
+==============================================================================
+§10a Tertiles of the top continuous modifiers (exploratory)
+==============================================================================
+Age (y): linear trend across tertiles p = 0.180
+Baseline HbA1c (%): linear trend across tertiles p = 0.512
+BMI: linear trend across tertiles p = 0.528
+          subgroup               level   n    est     lo    hi
+           Age (y)           T1: 21-51 121  0.193 -0.553 0.938
+           Age (y)           T2: 52-60 110  0.106 -0.559 0.772
+           Age (y)           T3: 61-83 110 -0.446 -0.981 0.090
+Baseline HbA1c (%)             T1: 8-9 131  0.308 -0.124 0.740
+Baseline HbA1c (%)        T2: 9.1-10.7 100 -0.584 -1.309 0.141
+Baseline HbA1c (%)       T3: 10.8-18.7 110  0.037 -0.798 0.872
+               BMI  T1: 18.1662-32.535 114  0.142 -0.508 0.793
+               BMI T2: 32.5531-39.7011 113 -0.123 -0.852 0.607
+               BMI  T3: 39.741-104.148 114 -0.143 -0.748 0.461
+
+==============================================================================
+§10b Honest (sample-split) causal tree
+==============================================================================
+Leaves: discovery-half estimate (optimistic) vs estimation-half estimate (honest):
+                         level  n  est_discovery    est     lo    hi
+                 Age (y) <= 48 43          1.273 -0.722 -1.998 0.554
+Age (y) > 48 & Age (y) <= 53.5 29         -1.645  0.861 -0.304 2.026
+ Age (y) > 48 & Age (y) > 53.5 99         -0.050 -0.102 -0.801 0.598
+Honest test of any difference between leaves (estimation half): p = 0.181
+Shrinkage from discovery to estimation half shows how much of the 'signal' was noise.
+
+Honest single-variable splits (threshold from discovery half, estimate from estimation half):
+                          subgroup    level   n    est     lo    hi  p_interaction
+                           Age (y)    <= 48  43 -0.722 -1.998 0.554          0.244
+                           Age (y)     > 48 128  0.116 -0.488 0.720          0.244
+                Baseline HbA1c (%)  <= 9.05  68  0.174 -0.445 0.793          0.397
+                Baseline HbA1c (%)   > 9.05 103 -0.272 -1.099 0.555          0.397
+                               BMI <= 37.01 104 -0.146 -0.896 0.604          0.815
+                               BMI  > 37.01  67 -0.014 -0.828 0.800          0.815
+Days, baseline A1c test to consent    <= 98 102  0.185 -0.534 0.905          0.229
+Days, baseline A1c test to consent     > 98  69 -0.508 -1.378 0.362          0.229
+                       Systolic BP   <= 111  29 -0.797 -2.080 0.487          0.244
+                       Systolic BP    > 111 142  0.049 -0.565 0.663          0.244
+
+==============================================================================
+§10c Split stability of the root variable
+==============================================================================
+Root-split variable across 200 random half-samples (share of splits):
+Age (y)                         0.275
+Baseline HbA1c (%)              0.155
+Systolic BP                     0.110
+BMI                             0.075
+Any prior-year inpatient        0.075
+Prior-year outpatient visits    0.070
+Diastolic BP                    0.065
+Male                            0.050
+
+==============================================================================
+§11 Sensitivity analyses
+==============================================================================
+S1 outcome = 6-mo level
+  repeat 1/3 done
+  repeat 3/3 done
+  repeat 2/3 done
+  S1 Outcome = 6-mo level: N=341, ATE -0.046, BLP beta2 -4.68 (one-sided p 0.998), AUTOC -0.500 (p 0.998)
+S2 not run: adding LDL needs patients with LDL measured (see the _ldl_cc run)
+S3 inverse probability of inclusion weights (missing outcome / incomplete covariates)
+  inclusion model AUC = 0.63 (0.5 = exclusion unrelated to baseline X); weights range 0.77-1.50
+  repeat 2/3 done
+  repeat 1/3 done
+  repeat 3/3 done
+  S3 IPW for excluded patients: N=341, ATE +0.030, BLP beta2 -3.88 (one-sided p 0.994), AUTOC -0.496 (p 0.996)
+S4 baseline value measured <=180 days before consent
+  repeat 2/3 done
+  repeat 1/3 done
+  repeat 3/3 done
+  S4 Baseline measured <=180 d before consent: N=276, ATE +0.033, BLP beta2 -2.85 (one-sided p 0.933), AUTOC -0.170 (p 0.768)
+Positive control: injected age-based heterogeneity of known size
+  repeat 2/3 done
+  repeat 3/3 done
+  repeat 1/3 done
+  PC injected contrast 0.57 pp = 0.25 SD (older vs younger): N=341, ATE -0.021, BLP beta2 -1.19 (one-sided p 0.848), AUTOC -0.218 (p 0.899)
+  repeat 3/3 done
+  repeat 2/3 done
+  repeat 1/3 done
+  PC injected contrast 1.13 pp = 0.5 SD (older vs younger): N=341, ATE -0.044, BLP beta2 +1.11 (one-sided p 0.064), AUTOC +0.171 (p 0.134)
+  repeat 3/3 done
+  repeat 1/3 done
+  repeat 2/3 done
+  PC injected contrast 2.26 pp = 1 SD (older vs younger): N=341, ATE -0.084, BLP beta2 +1.51 (one-sided p 0.000), AUTOC +0.698 (p 0.000)
+
+==============================================================================
+§12 Figures
+==============================================================================
+Figures written to outputs\v3\hba1c/
+
+==============================================================================
+§13 Results files
+==============================================================================
+Wrote results_summary.md, results.json, table_*.csv, patient_level_cate.csv to outputs\v3\hba1c/
+
+Formal out-of-fold tests do NOT detect treatment-effect heterogeneity. Subgroup estimates below should be read as consistent with a uniform (null) effect; any nominally significant subgroup is expected under multiple testing.
